@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//hello
 namespace OOP3_ExtensionMethod
 {
     public static class MyUtils
@@ -18,7 +18,7 @@ namespace OOP3_ExtensionMethod
             }
             return sum;
         }
-
+       
         public static void SapXepTangDan(this int[] arr)
         {
             for (int i = 0; i < arr.Length; i++)
