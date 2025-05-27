@@ -12,6 +12,7 @@
 //Câu 1 ; Tạo 5 nhân viên, 4 fulltime, 1 partime
 using System.Text;
 using OOP2;
+Console.OutputEncoding = Encoding.UTF8;
 
 List<Employee>employees = new List<Employee>();
 FullTimeEmployee fe1 = new FullTimeEmployee()
@@ -48,7 +49,7 @@ FullTimeEmployee fe4 = new FullTimeEmployee()
 employees.Add(fe4);
 ParttimeEmployee pe1 = new ParttimeEmployee()
 {
-    Id = 1,
+    Id = 5,
     Name = "Name 5",
     IdCard = "789",
     Birthday = new DateTime(1999, 12, 7),
@@ -57,6 +58,50 @@ ParttimeEmployee pe1 = new ParttimeEmployee()
 
 
 employees.Add(pe1);
+
+// Menu system
+while (true)
+{
+    Console.WriteLine("\n=== MENU QUẢN LÝ NHÂN VIÊN ===");
+    Console.WriteLine("1. Xem danh sách nhân viên");
+    Console.WriteLine("2. Sắp xếp nhân viên theo năm sinh");
+    Console.WriteLine("3. Sửa thông tin nhân viên");
+    Console.WriteLine("4. Xóa nhân viên");
+    Console.WriteLine("5. Thoát");
+    Console.Write("Chọn chức năng (1-5): ");
+
+    if (int.TryParse(Console.ReadLine(), out int choice))
+    {
+        switch (choice)
+        {
+            case 1:
+                Console.WriteLine("\nDanh sách nhân viên:");
+                employees.ForEach(e => Console.WriteLine(e));
+                break;
+            case 2:
+                SortEmployees(employees);
+                Console.WriteLine("\nDanh sách sau khi sắp xếp theo năm sinh tăng dần:");
+                employees.ForEach(e => Console.WriteLine(e));
+                break;
+            case 3:
+                EditEmployee(employees);
+                break;
+            case 4:
+                DeleteEmployee(employees);
+                break;
+            case 5:
+                Console.WriteLine("Bye!");
+                return;
+            default:
+                Console.WriteLine("Lựa chọn không hợp lệ!");
+                break;
+        }
+    }
+    else
+    {
+        Console.WriteLine("Vui lòng nhập số!");
+    }
+}
 
 //Câu 2 : Xuất toàn bộ thông tin toàn bộ nhân sự
 Console.OutputEncoding=Encoding.UTF8;
@@ -73,21 +118,103 @@ foreach (var e in employees)
 
 //Câu 3 : Sắp xếp nhân viên năm sinh tăng dần 
 //cũng là R
-for (int i = 0; i < employees.Count; i++)
-{
-    for (int j = i+1; j < employees.Count; j++)
-    {
-        Employee ei = employees[i];
-        Employee ej = employees[j];
-        if(ei.Birthday < ej.Birthday)
-        {
-            employees[i] = ej;
-            employees[j] = ei;
-        }
 
+static void SortEmployees(List<Employee> employees)
+{
+    for (int i = 0; i < employees.Count; i++)
+    {
+        for (int j = i + 1; j < employees.Count; j++)
+        {
+            Employee ei = employees[i];
+            Employee ej = employees[j];
+            if (ei.Birthday < ej.Birthday)
+            {
+                employees[i] = ej;
+                employees[j] = ei;
+            }
+        }
     }
 }
-Console.WriteLine("------sau khi sắp xếp thoe năm sinh-------");
+
+
+//câu 4: sửa thông tin nhân viên
+static void EditEmployee(List<Employee> employees)
+{
+    Console.WriteLine("\n=== Sửa thông tin nhân viên ===");
+    Console.Write("Nhập mã nhân viên cần sửa: ");
+    if (int.TryParse(Console.ReadLine(), out int id))
+    {
+        Employee employeeToEdit = employees.Find(e => e.Id == id);
+        if (employeeToEdit != null)
+        {
+            Console.Write("Nhập tên mới: ");
+            employeeToEdit.Name = Console.ReadLine();
+
+            Console.Write("Nhập IdCard mới: ");
+            employeeToEdit.IdCard = Console.ReadLine();
+
+            Console.Write("Nhập ngày sinh mới (dd/MM/yyyy): ");
+            if (DateTime.TryParse(Console.ReadLine(), out DateTime birthday))
+            {
+                employeeToEdit.Birthday = birthday;
+            }
+
+            // Kiểm tra nếu là nhân viên part-time thì cho phép sửa số giờ làm
+            if (employeeToEdit is ParttimeEmployee parttimeEmployee)
+            {
+                Console.Write("Nhập số giờ làm mới: ");
+                if (int.TryParse(Console.ReadLine(), out int workingHours))
+                {
+                    parttimeEmployee.WorkingHour = workingHours;
+                }
+            }
+
+            Console.WriteLine("Đã cập nhật thông tin thành công!");
+        }
+        else
+        {
+            Console.WriteLine("Không tìm thấy nhân viên có mã này!");
+        }
+    }
+    else
+    {
+        Console.WriteLine("Mã nhân viên không hợp lệ!");
+    }
+}
+
+
+EditEmployee(employees);
+
+Console.WriteLine("\nDanh sách nhân viên sau khi sửa:");
 employees.ForEach(e => Console.WriteLine(e));
 
+//câu 5: xóa nhân viên
+static void DeleteEmployee(List<Employee> employees)
+{
+    Console.WriteLine("\n=== Xóa nhân viên ===");
+    Console.Write("Nhập mã nhân viên cần xóa: ");
+    if (int.TryParse(Console.ReadLine(), out int id))
+    {
+        Employee employeeToDelete = employees.Find(e => e.Id == id);
+        if (employeeToDelete != null)
+        {
+            employees.Remove(employeeToDelete);
+            Console.WriteLine("Đã xóa nhân viên thành công!");
+        }
+        else
+        {
+            Console.WriteLine("Không tìm thấy nhân viên có mã này!");
+        }
+    }
+    else
+    {
+        Console.WriteLine("Mã nhân viên không hợp lệ!");
+    }
+}
 
+// Gọi hàm xóa nhân viên
+DeleteEmployee(employees);
+
+// Hiển thị danh sách sau khi xóa
+Console.WriteLine("\nDanh sách nhân viên sau khi xóa:");
+employees.ForEach(e => Console.WriteLine(e));
