@@ -1,0 +1,19 @@
+﻿// See https://aka.ms/new-console-template for more information
+using System.Text;
+
+Console.OutputEncoding = Encoding.UTF8;
+Console.WriteLine("Phương trình bậc 1");
+Console.WriteLine("Nhập hệ số a: ");
+double a = double.Parse(Console.ReadLine());
+Console.WriteLine("Nhập hệ số b: ");
+double b = double.Parse(Console.ReadLine());
+if(a==0 && b==0)
+{
+    Console.WriteLine("pt vo so nghiem");
+}
+else if(a==0 && b!=0)
+{
+    Console.WriteLine("pt vo nghiem");
+}
+else Console.WriteLine("X={0}",-b/a);
+Console.ReadLine();
