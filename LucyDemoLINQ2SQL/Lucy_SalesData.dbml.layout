@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 11.375" name="Lucy_SalesData">
+  <DataContextMoniker Name="/Lucy_SalesDataDataContext" />
+  <nestedChildShapes>
+    <classShape Id="253b00cf-55f0-4244-abcf-cb6a85db1c43" absoluteBounds="5.75, 7.375, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/Lucy_SalesDataDataContext/Category" />
+      <nestedChildShapes>
+        <elementListCompartment Id="20448f43-0877-4ce6-a58e-ce561dd656b8" absoluteBounds="5.765, 7.8350000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7d149f21-2dd2-4082-afed-120840f9e1e0" absoluteBounds="3.5, 8.375, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/Lucy_SalesDataDataContext/Product" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f8288d37-e33c-469d-804d-5c66925e95c1" absoluteBounds="3.515, 8.835, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9e61e965-d404-421e-9096-307f2b949eb6" absoluteBounds="0.75, 5, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/Lucy_SalesDataDataContext/Employee" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9534325f-5987-41e3-877f-cc3eb9799f6a" absoluteBounds="0.765, 5.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d9a768fc-9d3c-4e80-bf4c-a36a5021c6c1" absoluteBounds="0.75, 0.875, 2, 1.9631982421875">
+      <DataClassMoniker Name="/Lucy_SalesDataDataContext/Customer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1c098ec6-1345-48e4-9909-4508417acbeb" absoluteBounds="0.765, 1.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4ff3a273-c1ce-448a-a1ea-a6c25aaa0e7e" absoluteBounds="6.25, 1, 2, 1.7708968098958329">
+      <DataClassMoniker Name="/Lucy_SalesDataDataContext/Order_Detail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d8fe8edd-dc2d-49a2-a666-a1ba459bdc19" absoluteBounds="6.265, 1.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="09ac3f22-eace-4982-8889-8d9391263478" absoluteBounds="3.5, 1.125, 2, 1.5785953776041663">
+      <DataClassMoniker Name="/Lucy_SalesDataDataContext/Order" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e930d56d-3911-4b54-a2af-62a01f77cacc" absoluteBounds="3.515, 1.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.75 : 8.56814697265625); (5.5 : 8.56814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/Lucy_SalesDataDataContext/Category/Category_Product" />
+      <nodes>
+        <classShapeMoniker Id="253b00cf-55f0-4244-abcf-cb6a85db1c43" />
+        <classShapeMoniker Id="7d149f21-2dd2-4082-afed-120840f9e1e0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 9.96559895833333); (8.03125 : 9.96559895833333); (8.03125 : 2.77089680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/Lucy_SalesDataDataContext/Product/Product_Order_Detail" />
+      <nodes>
+        <classShapeMoniker Id="7d149f21-2dd2-4082-afed-120840f9e1e0" />
+        <classShapeMoniker Id="4ff3a273-c1ce-448a-a1ea-a6c25aaa0e7e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 1.91429768880208); (6.25 : 1.91429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/Lucy_SalesDataDataContext/Order/Order_Order_Detail" />
+      <nodes>
+        <classShapeMoniker Id="09ac3f22-eace-4982-8889-8d9391263478" />
+        <classShapeMoniker Id="4ff3a273-c1ce-448a-a1ea-a6c25aaa0e7e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 1.91429768880208); (3.5 : 1.91429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/Lucy_SalesDataDataContext/Customer/Customer_Order" />
+      <nodes>
+        <classShapeMoniker Id="d9a768fc-9d3c-4e80-bf4c-a36a5021c6c1" />
+        <classShapeMoniker Id="09ac3f22-eace-4982-8889-8d9391263478" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 6.17390055338542); (4.5 : 6.17390055338542); (4.5 : 2.70359537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/Lucy_SalesDataDataContext/Employee/Employee_Order" />
+      <nodes>
+        <classShapeMoniker Id="9e61e965-d404-421e-9096-307f2b949eb6" />
+        <classShapeMoniker Id="09ac3f22-eace-4982-8889-8d9391263478" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
